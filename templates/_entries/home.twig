@@ -1,0 +1,94 @@
+{% set element = craft.entries.id(entryId).one() %}
+{% set page = page ??? craft.app.request.pageNum ??? 1 %}
+{% set limit = 5 %}
+{% set offset = offset ?? 0 %}
+{% set cat = cat ?? '' %}
+{% set categories = craft.categories().group('blogCats').collect() ?? null %}
+
+{% set entryQuery = craft.entries
+  .section('blog')
+  .with(['image', 'blogRelatedCat'])
+  .limit(limit)
+  .offset(offset)
+  .orderBy('date DESC') %}
+
+{% if cat %}
+  {% do sprig.pushUrl('/?' ~ 'cat=' ~ cat ) %}
+  {% do entryQuery.andRelatedTo(craft.categories.slug(cat).collect().first()) %}
+{% endif %}
+
+{% set pageInfo = sprig.paginate(entryQuery, page) %}
+{% set entries = pageInfo.pageResults %}
+
+<div class="mb-6 text-center">
+  <select sprig s-indicator="#counter" value="{{cat}}" name="cat" id="cat" class="inline-block px-2 py-1 pr-6 font-bold border-4 border-gray-200 rounded-md shadow-sm appearance-none form-select focus:outline-none focus:border-rose-300 focus:ring-2 focus:ring-rose-200 focus:ring-opacity-50">
+    <option value="">Show all</option>
+    {% for item in categories %}
+        <option value="{{item.slug}}" {{ cat == item.slug ? 'selected' }}>{{item.title}}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div id="results" class="bg-white divide-y rounded-lg shadow-md">
+  {% for item in entries %}
+    <a href=""
+        sprig
+        s-val:entryId="{{ item.id }}"
+        s-push-url="{{ item.getUrl() }}"
+        class="block p-6 fade sprig-card hover:bg-gray-50"
+    >
+
+      <h2 class="mt-1 mb-2 font-medium">{{item.title}}</h2>
+      <p class="mb-3">{{item.teaser}}</p>
+      <p class="text-xs text-gray-500 uppercase">
+        <span class="bg-green-100 text-green-800 text-xs font-medium mr-1 px-1.5 py-0.5 rounded">
+          {{ item.blogRelatedCat.one().title }}
+        </span>
+        <span>
+          {{item.date|date("D, d.M Y")}}</p>
+        </span>
+    </a>
+  {% endfor %}
+</div>
+
+<div>
+  {% if entryQuery.count() > offset + (entries|length) %}
+    <div class="my-6 text-center">
+      <button id="load-more-oob"
+        sprig
+        s-target="#results"
+        s-swap="beforeend"
+        s-select="#results .sprig-card"
+        s-val:offset="{{ offset + limit }}"
+        class="inline-flex items-center px-4 py-2 text-sm font-semibold text-white rounded-md shadow-sm bg-rose-500 hover:bg-rose-700"
+        {{ sprig.trigger == "load-more-oob" ? 's-swap-oob="true"' }}>
+        <span>load more</span>
+        <svg class="w-5 h-5 ml-3 text-white htmx-indicator animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </button>
+    </div>
+  {% else %}
+    {# Swaps the button out-of-band with a dummy button that is hidden #}
+    <button id="load-more-oob" s-swap-oob="true" style="display: none"></button>
+  {% endif %}
+</div>
+
+<style>
+  .form-select { background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-position: right 0.5rem center; background-repeat: no-repeat;
+  background-size: 1.5em 1.5em; padding-right: 2.5rem; -webkit-print-color-adjust: exact; color-adjust: exact;
+  print-color-adjust: exact;}
+
+  .htmx-indicator {
+    display: none;
+  }
+
+  .htmx-request .htmx-indicator {
+    display: block;
+  }
+</style>
+
+
+

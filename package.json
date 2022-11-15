@@ -1,0 +1,20 @@
+{
+  "name": "craft-cms-4-sprig-spa-blog",
+  "version": "1.0.0",
+  "description": "Simple SPRIG SPA starter kit for CraftCMS 4.",
+  "author": {
+    "email": "webworker.ag@gmail.com",
+    "name": "Andi Grether",
+    "url": "https://webworker.me/"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "prettier-plugin-twig-melody": "^0.4.6"
+  }
+}

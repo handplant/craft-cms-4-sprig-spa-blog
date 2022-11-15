@@ -1,0 +1,12 @@
+{% set element = craft.entries.id(entryId).one() %}
+<h1 class="mb-6 text-2xl font-bold fade">
+  {{ element.title }}
+</h1>
+
+<div class="fade">
+  {{ element.body }}
+
+  <p class="mt-12">
+    <a href="https://github.com/handplant/craft-cms-4-sprig-spa-blog" class="text-rose-500 underline">Github Repo</a>
+  </p>
+</div>

@@ -1,0 +1,13 @@
+{% set current = craft.app.getElements().getElementByUri(craft.app.request.fullPath) %}
+{% set entryId = current.id ??? entryId ??? 1 %}
+{% set element = craft.entries.id(entryId).one() %}
+
+{% include "_nav" with {
+  entryId: entryId
+} %}
+
+<div class="max-w-screen-md py-16 mx-auto">
+  {% include "_entries/" ~ element.type with {
+    entryId: entryId
+  } %}
+</div>

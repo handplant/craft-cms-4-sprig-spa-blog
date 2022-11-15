@@ -1,0 +1,15 @@
+<html lang="{{ craft.app.language|slice(0, 2) }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .fade { animation: fadeIn ease 1s; } @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    {{ sprig("_app") }}
+    {{ sprig.script }}
+  </body>
+</html>

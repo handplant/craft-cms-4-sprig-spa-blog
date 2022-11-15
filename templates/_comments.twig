@@ -1,0 +1,43 @@
+{% set entry = entry ?? create("craft\\elements\\entry") %}
+{% set comments = craft.entries.section("comments").blogEntry(entryId).all() ?? null %}
+{% set comment = fields.comment ?? "" %}
+{% set errors = errors ?? null %}
+<div class="mt-20">
+  {% if errors is defined %}
+    {% for error in errors %}
+      <p class="error">
+        {{ error|first }}
+      </p>
+    {% endfor %}
+  {% endif %}
+
+  <form sprig s-method="post" s-action="guest-entries/save">
+    <input type="hidden" name="sectionUid" value="e31656a7-ea0b-46fb-b499-05b23593483a" />
+    <textarea type="text"
+      id="comment"
+      class="w-full p-4 h-32 border rounded-lg focus:outline-none focus:border-rose-300 focus:ring-2 focus:ring-rose-200 focus:ring-opacity-50"
+      name="fields[comment]"
+      value=""
+      placeholder="write a comment"
+      required></textarea>
+    <input type="hidden" name="fields[blogEntry][]" value="{{ entryId }}" />
+    <input type="submit"
+      value="Submit"
+      class="bg-rose-500 transition hover:bg-rose-700 text-white p-2 w-full rounded-lg mt-2" />
+  </form>
+
+  <div>
+    <ul class="bg-white divide-y rounded-lg shadow-md">
+      {% for item in comments %}
+        <li class="block p-6 fade sprig-card space-y-4">
+          <div class="text-sm leading-tight">
+            {{ item.comment|nl2br }}
+          </div>
+          <div class="text-xs text-gray-500 uppercase">
+            {{ item.dateCreated|date("D, d.M Y - H:i") }}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+defaultPlacement: end
+enableVersioning: true
+handle: about
+name: About
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  5a388334-4b50-4126-b1df-67227ce21818: # $SITE_NAME
+    enabledByDefault: true
+    hasUrls: true
+    template: index.twig
+    uriFormat: about
+type: single

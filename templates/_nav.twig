@@ -1,0 +1,27 @@
+{% set navItems = craft.entries.section("navigation").level(1).collect() %}
+
+<div class="bg-gray-100">
+  <div class="p-12 text-5xl font-black text-center text-transparent sm:text-6xl bg-clip-text bg-gradient-to-br from-rose-200 via-rose-900 to-rose-200">
+    Craft Sprig Blog
+  </div>
+  <nav class="max-w-screen-md p-4 mx-auto">
+    <ul class="flex justify-center space-x-12">
+      {% for item in navItems %}
+        <li>
+          {% set element = item.navigationLink.getElement() %}
+          {% set class = "text-2xl tracking-widest text-rose-700 hover:text-black" %}
+          {% if entryId == item.navigationLink.getElement().getId() %}
+            {% set class = class ~ " " ~ " font-bold" %}
+          {% endif %}
+          <a href=""
+            class="{{ class }}"
+            sprig
+            s-val:entryId="{{ item.navigationLink.getElement().getId() }}"
+            s-push-url="{{ item.navigationLink.getIntrinsicUrl() }}">
+            {{ item.navigationLink.getText() }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>

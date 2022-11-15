@@ -1,0 +1,175 @@
+dateModified: 1668513371
+elementSources:
+  craft\elements\Entry:
+    -
+      disabled: false
+      key: '*'
+      tableAttributes:
+        - section
+        - type
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+    -
+      key: singles
+      type: native
+    -
+      heading: Channels
+      type: heading
+    -
+      defaultSort:
+        - postDate
+        - desc
+      disabled: false
+      key: 'section:3a7b0cff-9784-4566-82c7-8058d29810aa' # Blog
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - author
+        - link
+        - revisionCreator
+      type: native
+    -
+      key: 'section:e31656a7-ea0b-46fb-b499-05b23593483a' # Comments
+      type: native
+    -
+      heading: Structures
+      type: heading
+    -
+      disabled: false
+      key: 'section:585e4f7d-8f46-4f8c-b63b-80b4fc80b08b' # Navigation
+      tableAttributes:
+        - postDate
+        - expiryDate
+        - author
+        - link
+        - _childme_addChild
+      type: native
+    -
+      heading: ''
+      type: heading
+email:
+  fromEmail: $SYSTEM_MAIL
+  fromName: $SITE_NAME
+  replyToEmail: $REPLY_MAIL
+  template: ''
+  transportSettings:
+    command: '/usr/sbin/sendmail -bs'
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      path: $SITE_IMAGES_PATH
+    type: craft\fs\Local
+    url: $SITE_IMAGES_URL
+meta:
+  __names__:
+    1e3282cf-612c-4d04-b4f6-02ec0ef60e78: Title # Title
+    3a7b0cff-9784-4566-82c7-8058d29810aa: Blog # Blog
+    3c6fb20b-47c2-4dad-bdb3-f488a2681c30: 'Video URL' # Video URL
+    3c3695a6-a175-41c7-b8be-c1f97a2dbfb9: 'Preview Image' # Preview Image
+    5a1e32ac-68d3-4df3-97c6-1403d5041055: About # About
+    5a388334-4b50-4126-b1df-67227ce21818: $SITE_NAME # $SITE_NAME
+    5b1d9baa-f1c8-4462-8c42-dc7b3ebc3a4e: Images # Images
+    5b54e8f6-48f6-47a6-812e-7799a1e2f264: Image # Image
+    6d26ee64-a749-4528-b206-f147f95fd95e: 'Navigation - LInk' # Navigation - LInk
+    9b27ba6a-ef2d-40c5-a5b8-26472818eb49: Items # Items
+    13a95918-f4a2-4301-9a25-4816bccc6376: 'Preview Text' # Preview Text
+    24af7e7f-3b66-4f65-b596-3c1c1bc4161f: Home # Home
+    24e9e482-974e-4f43-b2cb-d6058deb865a: Headline # Headline
+    48f1991a-af03-4694-bbe3-4f2c50d13fb6: Default # Default
+    76d94634-01f8-4535-b4bf-e2870ae8f25d: 'Public Schema' # Public Schema
+    84aef975-f98d-44f6-8450-a081ab798069: Common # Common
+    87c31d25-eaea-4be8-b67a-935d2aea4afe: Date # Date
+    87d03d4b-eb91-48eb-9519-a716b2145a99: Text # Text
+    89ab1704-2d41-4adf-a90e-f0e259746370: Default # Default
+    90dc105e-bfad-485e-9427-e8c8b36de281: Image # Image
+    536ad9d9-6bf9-4746-b4ca-a39315a51f69: Text # Text
+    585e4f7d-8f46-4f8c-b63b-80b4fc80b08b: Navigation # Navigation
+    817fa701-2e9f-40bc-a4e2-80c921c789ed: Button # Button
+    832e06b7-23a1-43f1-9195-d9799aeeb7a2: Cards # Cards
+    4033c796-d853-4f95-aa8b-4d77d55e9384: Image # Image
+    4706b3bf-052e-4604-bbf9-0095d00f790a: Boilerplate # Boilerplate
+    5099f057-fd49-431c-a6fa-ddd239eec776: Category # Category
+    33331ab1-c592-4cbc-b1ab-dcbe07b37d60: 'Blog Entry' # Blog Entry
+    79831db1-8d94-4794-b29a-56322152f0b7: Caption # Caption
+    2640842e-fce4-49f3-8918-8fc9f3cb61e5: Comment # Comment
+    15051784-2fca-4ad6-adf4-37742ec0e0eb: Link # Link
+    75495664-81c9-48dd-b3eb-0f1f2c24fa80: Images # Images
+    a64e915c-f2dc-4b2f-9707-7236f4da543d: Body # Body
+    b43961b1-2d19-4986-a7d4-86afb4c236e5: Text # Text
+    ce845487-a637-4e39-a2cf-8e7fbdb0b3e2: Button # Button
+    d6d68433-69a8-40e3-b902-a9aa2a507b07: Text # Text
+    d71a42f3-d21a-46fc-9d2d-3d62f1fb78da: Blog # Blog
+    e3cc550c-fc28-4ee9-9be6-7ef998d866a9: Teaser # Teaser
+    e32e036d-dfaf-4b3d-8960-a0cdbbffa97b: 'Image Right' # Image Right
+    e31656a7-ea0b-46fb-b499-05b23593483a: Comments # Comments
+    ed363755-e701-4855-adf6-49a71f86f329: About # About
+    fa8f0e9f-92a8-479c-8c4b-bfb948696dae: 'Blog Entry' # Blog Entry
+    faa291e4-344c-4482-a847-09ab3f85bee6: Home # Home
+    fdded62b-4ab7-45a4-890f-871e91405d57: Headline # Headline
+    ffe769e6-5c30-464b-a3fd-048e7701e1f0: Geoman # Geoman
+plugins:
+  dumper:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  empty-coalesce:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  guest-entries:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.1.0
+    settings:
+      enableCsrfProtection: '1'
+      entryVariable: entry
+      sections:
+        __assoc__:
+          -
+            - e31656a7-ea0b-46fb-b499-05b23593483a # Comments
+            -
+              __assoc__:
+                -
+                  - sectionUid
+                  - e31656a7-ea0b-46fb-b499-05b23593483a # Comments
+                -
+                  - allowGuestSubmissions
+                  - '1'
+                -
+                  - enabledByDefault
+                  - '1'
+                -
+                  - runValidation
+                  - ''
+                -
+                  - authorUid
+                  - b50f4024-e2ca-4857-805b-8fa45385ee39
+  sprig:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+  typedlinkfield:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+system:
+  edition: solo
+  live: true
+  name: $SITE_NAME
+  retryDuration: null
+  schemaVersion: 4.0.0.9
+  timeZone: Europe/Berlin
+users:
+  allowPublicRegistration: false
+  deactivateByDefault: false
+  defaultGroup: ''
+  photoSubpath: null
+  photoVolumeUid: 5b1d9baa-f1c8-4462-8c42-dc7b3ebc3a4e # Images
+  requireEmailVerification: true
+  validateOnPublicRegistration: false

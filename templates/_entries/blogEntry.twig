@@ -1,0 +1,47 @@
+{% set element = craft.entries.id(entryId).one() %}
+{% set image = element.image.one() ?? null %}
+
+{% set thumb = {
+  mode: "crop",
+  width: 600
+} %}
+
+<div class="text-center">
+  <p>
+    <span class="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">
+      {{ element.blogRelatedCat.one().title }}
+    </span>
+  </p>
+  <h1 class="mt-2 mb-4 text-5xl font-black fade">
+    {{ element.title }}
+  </h1>
+  <p class="text-gray-500 uppercase">
+    {{ element.date|date("D, d.M Y") }}
+  </p>
+
+  {% if image %}
+    <div class="mt-12 text-center">
+      <img class="inline"
+        src="{{ image.getUrl(thumb) }}"
+        width="{{ image.getWidth(thumb) }}"
+        height="{{ image.getHeight(thumb) }}" />
+    </div>
+  {% endif %}
+
+  <div class="mt-12 leading-relaxed fade">
+    {{ element.body }}
+  </div>
+</div>
+
+{# {% include "_comments" with {
+  entryId: entryId
+} %} #}
+
+{{
+  sprig(
+    "_comments",
+    {
+      entryId: entryId
+    }
+  )
+}}

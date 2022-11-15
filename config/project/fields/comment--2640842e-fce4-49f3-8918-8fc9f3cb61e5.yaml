@@ -1,0 +1,19 @@
+columnSuffix: uaqlrdhc
+contentColumnType: string(640)
+fieldGroup: 84aef975-f98d-44f6-8450-a081ab798069 # Common
+handle: comment
+instructions: null
+name: Comment
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 160
+  code: false
+  columnType: null
+  initialRows: 10
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText
