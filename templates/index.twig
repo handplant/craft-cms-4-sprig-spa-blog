@@ -10,6 +10,6 @@
   </head>
   <body class="bg-gray-100">
     {{ sprig("_app") }}
-    {{ sprig.script }}
+    {% do sprig.registerScript %}
   </body>
 </html>
